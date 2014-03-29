@@ -5,6 +5,9 @@ Template.createDialog.events({
   'click .save': function (event, template) {
     var title = template.find(".title").value;
     var description = template.find(".description").value;
+    var dateTimeStartPicker = $('#datetimepicker1').data('datetimepicker');
+    var dateTimeEndPicker = $('#datetimepicker2').data('datetimepicker');
+
     var public = ! template.find(".private").checked;
     var latlng = Session.get("createCoords");
 
@@ -13,6 +16,8 @@ Template.createDialog.events({
         title: title,
         description: description,
         latlng: latlng,
+        start: new Date(dateTimeStartPicker.getLocalDate()),
+        end: new Date(dateTimeEndPicker.getLocalDate()),
         public: public
       }, function (error, party) {
         if (! error) {
@@ -40,6 +45,7 @@ Template.createDialog.error = function () {
 Template.createDialog.rendered = function() {
   $('.date-time-picker').datetimepicker({
     language: 'en',
+    format: 'dd/MM/yyyy hh:mm:ss',
     pick12HourFormat: true
   });
 }
