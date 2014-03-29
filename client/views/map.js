@@ -18,7 +18,7 @@ var initialize = function(element, centroid, zoom, features) {
   }).setView(new L.LatLng(centroid[0], centroid[1]), zoom);
 
   // Add Locate Control.
-  L.control.locate().addTo(map);
+  L.control.locate().addTo(map).locate();
 
   L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {opacity: .5}).addTo(map);
 
