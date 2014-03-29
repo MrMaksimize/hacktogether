@@ -18,7 +18,13 @@ var initialize = function(element, centroid, zoom, features) {
   }).setView(new L.LatLng(centroid[0], centroid[1]), zoom);
 
   // Add Locate Control.
-  L.control.locate().addTo(map).locate();
+  var lc = L.control.locate().addTo(map);
+  lc.locate();
+  map.on('startfollowing', function() {
+    map.on('dragstart', lc.stopFollowing);
+  }).on('stopfollowing', function() {
+    map.off('dragstart', lc.stopFollowing);
+  });
 
   L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {opacity: .5}).addTo(map);
 
@@ -89,7 +95,7 @@ Template.map.rendered = function () {
 
   // initialize map events
   if (!map) {
-    initialize($("#map_canvas")[0], [ 41.8781136, -87.66677956445312 ], 13);
+    initialize($("#map_canvas")[0], [ 18.2500, -66.5000 ], 9);
 
     map.on("dblclick", function(e) {
       if (! Meteor.userId()) // must be logged in to create parties
