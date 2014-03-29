@@ -4,7 +4,8 @@
     "basePackages": {
       "leaflet": {},
       "bootstrap3-less": {},
-      "leaflet-locatecontrol": {}
+      "leaflet-locatecontrol": {},
+      "leaflet-search": {}
     },
     "packages": {
       "leaflet": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/bevanhunt/meteor-leaflet-locatecontrol.git",
         "tag": "v0.0.7",
         "commit": "f3b67cdd48b4c366d4d4fe5e45a27544ac226197"
+      },
+      "leaflet-search": {
+        "git": "https://github.com/stefanocudini/leaflet-search.git",
+        "tag": "v1.4.7",
+        "commit": "411f216e1f407da9ef61047832b227c19ed47fab"
       }
     }
   }

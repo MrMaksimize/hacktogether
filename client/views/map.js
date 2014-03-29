@@ -17,7 +17,7 @@ var initialize = function(element, centroid, zoom, features) {
     touchZoom: false
   }).setView(new L.LatLng(centroid[0], centroid[1]), zoom);
 
-  // Add Locate Control.
+  // Location.
   var lc = L.control.locate().addTo(map);
   lc.locate();
   map.on('startfollowing', function() {
@@ -28,6 +28,36 @@ var initialize = function(element, centroid, zoom, features) {
 
   L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {opacity: .5}).addTo(map);
 
+  // Search + GeoCoding
+  var geocoder = new google.maps.Geocoder();
+
+  function googleGeocoding(text, callResponse) {
+    geocoder.geocode({address: text}, callResponse);
+  }
+
+  function filterJSONCall(rawjson)  {
+    var json = {},
+	  key, loc, disp = [];
+
+    for (var i in rawjson) {
+	  key = rawjson[i].formatted_address;
+	  loc = L.latLng( rawjson[i].geometry.location.lat(), rawjson[i].geometry.location.lng() );
+	  json[ key ]= loc;	//key,value format
+    }
+	return json;
+  }
+
+	map.addControl( new L.Control.Search({
+      callData: googleGeocoding,
+	  filterJSON: filterJSONCall,
+      markerLocation: false,
+      autoType: false,
+      autoCollapse: true,
+      minLength: 2,
+      zoom: 9
+	}) );
+
+  // Attribution
   map.attributionControl.setPrefix('');
 
 	var attribution = new L.Control.Attribution();
