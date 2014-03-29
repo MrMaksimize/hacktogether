@@ -12,27 +12,28 @@ Accounts.loginServiceConfiguration.remove({
 
 // localhost:3000
 Accounts.loginServiceConfiguration.insert({
+  // @TODO look at abstracting these to envs.
   service: "github",
-  clientId: "83f1c796a14e1f6ea61a",
-  secret: "1c59890a41679554964713050e237ee89332731b"
+  clientId: "b9ef514af5fe72864a77",
+  secret: "d880e1cacdeebb95804dc4801e0323410e221c53"
 });
 
 Accounts.onCreateUser(function(options, user){
   var accessToken = user.services.github.accessToken,
     result,
     profile;
-  	
+
 	result = Meteor.http.get("https://api.github.com/user", {
     headers: {"User-Agent": "Meteor/1.0"},
     params: {
       access_token: accessToken
     }
   });
-	
+
   if (result.error) {
     throw error;
   }
-  
+
   profile = _.pick(result.data,
     "login",
     "name",
@@ -44,8 +45,8 @@ Accounts.onCreateUser(function(options, user){
     "email",
     "bio",
     "html_url");
-  
+
   user.profile = profile;
-  
+
   return user;
 });
