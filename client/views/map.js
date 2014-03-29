@@ -64,7 +64,7 @@ var initialize = function(element, centroid, zoom, features) {
 
 	var attribution = new L.Control.Attribution();
   attribution.addAttribution("Geocoding data &copy; 2013 <a href='http://open.mapquestapi.com'>MapQuest, Inc.</a>");
-  attribution.addAttribution("Map tiles by <a href='http://stamen.com'>Stamen Design</a> under <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>.");
+  attribution.addAttribution("Map tiles by <a href='http://mapbox.com'>Mapbox Design</a> under <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>.");
   attribution.addAttribution("Data by <a href='http://openstreetmap.org'>OpenStreetMap</a> under <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>.");
 
   map.addControl(attribution);
@@ -164,4 +164,3 @@ Template.map.rendered = function () {
     })
   }
 };
-
