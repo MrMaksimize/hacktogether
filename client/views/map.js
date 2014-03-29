@@ -26,7 +26,9 @@ var initialize = function(element, centroid, zoom, features) {
     map.off('dragstart', lc.stopFollowing);
   });
 
-  L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {opacity: .5}).addTo(map);
+  //L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {opacity: .5}).addTo(map);
+  //L.tileLayer('http://{s}.https://a.tiles.mapbox.com/v3/mrmaksimize.hlbm11il/page.html?secure=1#10/18.2404/-66.5339
+  L.tileLayer('http://api.tiles.mapbox.com/v3/mrmaksimize.hlbm11il/{z}/{x}/{y}.png', {opacity: .5}).addTo(map);
 
   // Search + GeoCoding
   var geocoder = new google.maps.Geocoder();
