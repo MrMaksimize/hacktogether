@@ -37,3 +37,9 @@ Template.createDialog.error = function () {
   return Session.get("createError");
 };
 
+Template.createDialog.rendered = function() {
+  $('.date-time-picker').datetimepicker({
+    language: 'en',
+    pick12HourFormat: true
+  });
+}
