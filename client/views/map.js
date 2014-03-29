@@ -9,23 +9,26 @@ $(window).resize(function () {
 
 var map, markers = [ ];
 
-var initialize = function(element, centroid, zoom, features) { 
+var initialize = function(element, centroid, zoom, features) {
   map = L.map(element, {
     scrollWheelZoom: false,
     doubleClickZoom: false,
     boxZoom: false,
     touchZoom: false
   }).setView(new L.LatLng(centroid[0], centroid[1]), zoom);
-  
+
+  // Add Locate Control.
+  L.control.locate().addTo(map);
+
   L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {opacity: .5}).addTo(map);
 
   map.attributionControl.setPrefix('');
-  
+
 	var attribution = new L.Control.Attribution();
   attribution.addAttribution("Geocoding data &copy; 2013 <a href='http://open.mapquestapi.com'>MapQuest, Inc.</a>");
   attribution.addAttribution("Map tiles by <a href='http://stamen.com'>Stamen Design</a> under <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>.");
   attribution.addAttribution("Data by <a href='http://openstreetmap.org'>OpenStreetMap</a> under <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>.");
-  
+
   map.addControl(attribution);
 }
 
@@ -45,7 +48,7 @@ var createIcon = function(party) {
   return L.divIcon({
     iconSize: [30, 30],
     html: '<b>' + attending(party) + '</b>',
-    className: className  
+    className: className
   });
 }
 
@@ -63,7 +66,7 @@ Template.map.created = function() {
         icon: createIcon(party)
       }).on('click', function(e) {
         Session.set("selected", e.target.options._id);
-      });      
+      });
       addMarker(marker);
     },
     changed: function(party) {
@@ -77,25 +80,25 @@ Template.map.created = function() {
 }
 
 
-Template.map.rendered = function () { 
+Template.map.rendered = function () {
   // basic housekeeping
   $(window).resize(function () {
     var h = $(window).height(), offsetTop = 90; // Calculate the top offset
     $('#map_canvas').css('height', (h - offsetTop));
   }).resize();
-  
+
   // initialize map events
   if (!map) {
     initialize($("#map_canvas")[0], [ 41.8781136, -87.66677956445312 ], 13);
-    
+
     map.on("dblclick", function(e) {
       if (! Meteor.userId()) // must be logged in to create parties
         return;
-        
+
       openCreateDialog(e.latlng);
     });
-    
-    
+
+
     var self = this;
     Meteor.autorun(function() {
       var selectedParty = Parties.findOne(Session.get("selected"));
@@ -118,7 +121,7 @@ Template.map.rendered = function () {
             [selectedParty.latlng.lat, selectedParty.latlng.lng]]);
           self.animatedMarker.setLine(line.getLatLngs());
           self.animatedMarker.start();
-        } 
+        }
       }
     })
   }

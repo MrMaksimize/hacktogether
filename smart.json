@@ -1,6 +1,7 @@
 {
   "packages": {
     "leaflet": {},
-    "bootstrap3-less": {}
+    "bootstrap3-less": {},
+    "leaflet-locatecontrol": {}
   }
 }
