@@ -22,6 +22,14 @@ Template.attendance.rsvpIs = function (what) {
   return this.rsvp === what;
 };
 
+Template.attendance.eventStartDate = function() {
+  return this.start;
+};
+
+Template.attendance.eventEndDate = function() {
+  return this.end;
+};
+
 Template.attendance.nobody = function () {
   return ! this.public && (this.rsvps.length + this.invited.length === 0);
 };
