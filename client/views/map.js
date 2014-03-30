@@ -101,6 +101,7 @@ var openCreateDialog = function (latlng) {
   Session.set("showCreateDialog", true);
 };
 
+
 Template.map.created = function() {
   Parties.find({}).observe({
     added: function(party) {
@@ -109,8 +110,10 @@ Template.map.created = function() {
         icon: createIcon(party)
       }).on('click', function(e) {
         Session.set("selected", e.target.options._id);
+
       });
       addMarker(marker);
+      
     },
     changed: function(party) {
       var marker = markers[party._id];
