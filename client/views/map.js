@@ -9,6 +9,8 @@ $(window).resize(function () {
 
 var map, markers = [ ];
 
+
+
 var initialize = function(element, centroid, zoom, features) {
   map = L.map(element, {
     scrollWheelZoom: false,
@@ -73,7 +75,9 @@ var initialize = function(element, centroid, zoom, features) {
 var addMarker = function(marker) {
   map.addLayer(marker);
   markers[marker.options._id] = marker;
+
 }
+
 
 var removeMarker = function(_id) {
   var marker = markers[_id];
