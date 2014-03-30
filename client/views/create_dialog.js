@@ -16,8 +16,8 @@ Template.createDialog.events({
         title: title,
         description: description,
         latlng: latlng,
-        start: new Date(dateTimeStartPicker.getLocalDate()),
-        end: new Date(dateTimeEndPicker.getLocalDate()),
+        start: dateTimeStartPicker.getLocalDate().toString(),
+        end: dateTimeEndPicker.getLocalDate().toString(),
         public: public
       }, function (error, party) {
         if (! error) {
