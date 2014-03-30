@@ -42,6 +42,7 @@ attending = function (party) {
 Meteor.methods({
   // options should include: title, description, x, y, public
   createParty: function (options) {
+    console.log(options);
     options = options || {};
     if (! (typeof options.title === "string" && options.title.length &&
            typeof options.description === "string" &&
@@ -59,6 +60,8 @@ Meteor.methods({
       latlng: options.latlng,
       title: options.title,
       description: options.description,
+      start: options.start,
+      end: options.end,
       public: !! options.public,
       invited: [],
       rsvps: []

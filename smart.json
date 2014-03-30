@@ -3,6 +3,7 @@
     "leaflet": {},
     "bootstrap3-less": {},
     "leaflet-locatecontrol": {},
-    "leaflet-search": {}
+    "leaflet-search": {},
+    "bootstrap-datetimepicker": {}
   }
 }

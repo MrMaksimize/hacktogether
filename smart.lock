@@ -5,7 +5,8 @@
       "leaflet": {},
       "bootstrap3-less": {},
       "leaflet-locatecontrol": {},
-      "leaflet-search": {}
+      "leaflet-search": {},
+      "bootstrap-datetimepicker": {}
     },
     "packages": {
       "leaflet": {
@@ -27,6 +28,11 @@
         "git": "https://github.com/stefanocudini/leaflet-search.git",
         "tag": "v1.4.7",
         "commit": "411f216e1f407da9ef61047832b227c19ed47fab"
+      },
+      "bootstrap-datetimepicker": {
+        "git": "https://github.com/Elfoslav/bootstrap-datetimepicker.git",
+        "tag": "v0.0.6",
+        "commit": "728e5d603c377652e6909e180358364c46ce95ff"
       }
     }
   }

@@ -6,4 +6,6 @@
 /fittext
 /leaflet-locatecontrol
 /leaflet-search
-/bootstrap-3
+
+/bootstrap-datepicker2
+/bootstrap-datetimepicker
