@@ -12,6 +12,7 @@ var map, markers = [ ];
 
 
 var initialize = function(element, centroid, zoom, features) {
+  L.Icon.Default.imagePath = '../packages/leaflet/images';
   map = L.map(element, {
     scrollWheelZoom: false,
     doubleClickZoom: false,
