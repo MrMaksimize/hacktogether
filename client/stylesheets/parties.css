@@ -92,7 +92,7 @@ input.chosen {
 #footer img {
     max-width: 150px;
     min-width: 150px;
-    position: relative; 
+    position: relative;
     left: 15px;
     margin-top: 25px;
 }
@@ -108,4 +108,8 @@ input.chosen {
 #footer #orgInfo {
     margin-top: 30px;
     margin-left: 10px;
+}
+
+.bootstrap-datetimepicker-widget {
+  z-index: 3000
 }
